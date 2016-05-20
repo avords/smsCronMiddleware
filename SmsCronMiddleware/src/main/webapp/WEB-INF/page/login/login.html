@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <title>登陆页面</title>
+    <!-- common css -->
+    <link rel="stylesheet" href="${dynamicDomain}/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${dynamicDomain}/static/css/main.css">
+    <link rel="stylesheet" href="${dynamicDomain}/static/css/ep-icon.css">
+    <!-- page css (根据页面需要进行增加)-->
+    <link rel="stylesheet" href="${dynamicDomain}/static/css/financeportal.css">
+</head>
+
+<body style="background: #aaa;">
+    <div class="wp">
+        <div class="install clearfix">
+            <div class="pull-left">
+                <div class="header-inner">
+                    <div class="logo inline"> <img src="${dynamicDomain}/static/img/inlogo.png" alt="logo"></div>
+                    <h1 class="logo-text inline">${middlewarename}<span class="text">Finace</span></h1>
+                </div>
+            </div>
+            <div class="pull-right "><a class="close" href="${dynamicDomain}/backstage/index"><i class="ep ep-danger-thin"></i></a></div>
+        </div>
+        <div class="mesTips nine">
+            <ul>
+                <li id="wstepone" class="hover"><a href="javascript:void(0)"><span>1.安装登录</span></a><span class="arrow"></span></li>
+                <li id="wsteptwo" class="next"><a href="javascript:void(0)"><span>2.运行环境检测</span></a><span class="arrow"></span></li>
+                <li id="wstepthree" class="next"><a href="javascript:void(0)"><span>3.选择模块</span></a><span class="arrow"></span></li>
+                <li id="wstepfour" class="next"><a href="javascript:void(0)"><span>4.文件权限设置</span></a><span class="arrow"></span></li>
+                <li id="wstepfive" class="next"><a href="javascript:void(0)"><span>5.数据库配置</span></a><span class="arrow"></span></li>
+                <li id="wstepsix" class="next"><a href="javascript:void(0)"><span>6.接口配置</span></a><span class="arrow"></span></li>
+                <li id="wstepseven" class="next"><a href="javascript:void(0)"><span>7.字段名修改</span></a><span class="arrow"></span></li>
+                <li id="wstepeight" class="next"><a href="javascript:void(0)"><span>8.安装详情</span></a><span class="arrow"></span></li>
+                <li id="wstepnine" class="next"><a href="javascript:void(0)"><span>9.安装完成</span></a><span class="arrow"></span></li>
+            </ul>
+        </div>
+        <div class="banner">
+        <!-- 进度条s -->
+         <div id="progressbar" class="progress progress-line" style="display: none;">
+            <div id="prb" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+            <span class="sr-only">40% Complete (success)</span>
+            </div>
+         </div>
+         <!-- 进度条e -->
+            <!--登录 s-->
+            <div id="one" class="box">
+                <div id="logindve" class="login loginlabel ">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="quest" class=" control-label text-left c-white pull-left w-100">企业编号：</label>
+                            <div class="col pull-left">
+                                <div class="form-group required w-400 ">
+                                    <input type="text" class="form-control"  name="spCode" id="spCode" value="280022" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="telp" class="control-label text-left c-white pull-left w-100">用户名：</label>
+                            <div class="col pull-left">
+                                <div class="form-group required w-400">
+                                    <input type="text" class="form-control" name="cName" id="cName"  value="yw_001" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="telphone" class="control-label text-left c-white pull-left w-100">安全秘钥：</label>
+                            <div class="col pull-left">
+                                <div class="form-group required w-400 ">
+                                    <input type="password" class="form-control" name="key" id="key" value="oDHAg9KqxPQU/YbSd0jAr11u7Y5ABQWL" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" style="display: none;">
+                            <p class=" text-center normal-text p-b-10">您输入的账户密码有误,请重新输入</p>
+                        </div>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-cons btn-primary" onclick="login();">提交</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="startbtndev" class="text-center padding-20 bg-white">
+                    <button id="startbtn" type="button" class="btn btn-primary btn-lg w-200" onclick="startins();" disabled="disabled">开始安装</button>
+                </div>
+            </div>
+            <!--登录 e-->
+            <!--文件权限设置 s-->
+            <div id="four" style="display: none;" class="box">
+                <div class="padding-40">
+                    <div class="boxtab">
+                        <table class="table text-center table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="33%">目录文件</th>
+                                    <th width="33%">所需状态</th>
+                                    <th width="33%">当前状态</th>
+                                </tr>
+                            </thead>
+                            <tbody id="filePermission">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="text-right m-tab p-t-20">
+                    <button id="fourup" type="button" onclick="wstepfourup();" class="btn btn-cons btn-default m-r-10">上一步</button>
+                    <button id="fourdown" type="button" onclick="wstepfourdown();" class="btn btn-cons btn-primary">下一步</button>
+                </div>
+            </div>
+            <!--文件权限设置 e-->
+            <!--数据库配置 s-->
+            <div id="five" class="box " style="display:none;">
+                <div class="padding-40">
+                    <div class="succ padding-20-40">
+                        <div class="checkdemo"><span>数据库配置</span></div>
+                        <div class="data datalabel ">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="quest" class="control-label text-left  pull-left w-100">数据库地址：</label>
+                                    <div class="col required pull-left">
+                                        <input type="text" class="form-control w-400" id="dbUrl"  name="dbUrl" value="jdbc:mysql://10.0.0.253:3306/sendsms?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="telp" class="control-label text-left pull-left w-100">数据库驱动：</label>
+                                    <div class="col required pull-left">
+                                        <input type="text" class="form-control w-400" id="dbDriver" name="dbDriver" value="com.mysql.jdbc.Driver" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="telphone" class="control-label text-left pull-left w-100">用户名：</label>
+                                    <div class="col required pull-left">
+                                        <input type="text" class="form-control w-400" id="dbUser" name="dbUser" value="root" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="telphone" class="control-label text-left pull-left w-100">密码：</label>
+                                    <div class="col required pull-left">
+                                        <input type="text" class="form-control w-400" id="dbPasswd" name="dbPasswd" value="flaginfo407" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right m-tab p-t-20">
+                        <button id="fiveup" type="button" onclick="wstepfiveup();" class="btn btn-cons btn-default m-r-10">上一步</button>
+                        <button id="fivedown" type="button" onclick="wstepfivedown();" class="btn btn-cons btn-primary">下一步</button>
+                    </div>
+                </div>
+            </div>
+            <!--数据库配置 e-->
+            <!--接口配置 s-->
+            <div id="six" class="box " style="display:none;">
+                <div class="padding-40">
+                    <div class="succ padding-20-40">
+                        <div class="checkdemo"><span>接口配置</span></div>
+                        <div class="data datalabel ">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="quest" class=" control-label text-left  pull-left w-250">发送短信url：</label>
+                                    <div class="col required pull-left">
+                                        <input type="text" class="form-control w-300" id="sendSMSUrl" name="sendSMSUrl" value="https://api.ums86.com" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="telp" class="control-label text-left pull-left w-250">发送e信url：</label>
+                                    <div class="col required pull-left">
+                                        <input type="text" class="form-control w-300" id="sendEMSUrl" name="sendEMSUrl" value="https://api.ums86.com" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="telphone" class="control-label text-left pull-left w-250">查询发送结果url：</label>
+                                    <div class="col required pull-left">
+                                        <input type="text" class="form-control w-300" id="getTaskUrl" name="getTaskUrl" value="https://api.ums86.com" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="telphone" class="control-label text-left pull-left w-250">查询上行回复结果url：</label>
+                                    <div class="col required pull-left">
+                                        <input type="text" class="form-control w-300" id="listReply" name="listReply" value="https://api.ums86.com" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-right m-tab p-t-20">
+                    <button id="sixup" type="button" onclick="wstepsixup();" class="btn btn-cons btn-default m-r-10">上一步</button>
+                    <button id="sixdown" type="button" onclick="wstepsixdown();" class="btn btn-cons btn-primary">下一步</button>
+                </div>
+            </div>
+            <!--接口配置 e-->
+             <!--数据库字段修改 s-->
+            <div id="seven" class="box " style="display:none;">
+                <div class="padding-40">
+                    <div class="succ padding-20-40">
+                        <div class="checkdemo"><span>数据库字段修改</span></div>
+                        <div class="data dataul">
+                            <div class="form-horizontal">
+                                <ul id="uls">
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="quest" class=" control-label text-left  pull-left w-150">信息发送表名：</label>
+                                            <div class="col required pull-left">
+                                                <input type="text" class="form-control w-100 input-sm" id="smsSendTable" name="smsSendTable"  value="send_emsd" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="telp" class="control-label text-left pull-left w-150">短信内容：</label>
+                                            <div class="col required pull-left">
+                                                <input type="text" class="form-control w-100 input-sm" id="messageContent" name="messageContent" value="text" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="telphone" class="control-label text-left pull-left w-150">要发送的号码：</label>
+                                            <div class="col required pull-left">
+                                                <input type="text" class="form-control w-100 input-sm" id="sendToMobile" name="sendToMobile" value="mobile" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="quest" class=" control-label text-left  pull-left w-150">唯一键值：</label>
+                                            <div class="col required pull-left">
+                                                <input type="text" class="form-control w-100 input-sm" id="id" name="id" value="id" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="telp" class="control-label text-left pull-left w-150">定时发送时间：</label>
+                                            <div class="col required pull-left">
+                                                <input type="text" class="form-control w-100 input-sm" id="planTime" name="planTime" value="scheduleTime" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="telphone" class="control-label text-left pull-left w-150">发送类型：</label>
+                                            <div class="col required pull-left">
+                                                <input type="text" class="form-control w-100 input-sm" id="sendType" name="sendType" value="sendType" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="telphone" class="control-label text-left pull-left w-150">短信发送类型值：</label>
+                                            <div class="col required pull-left">
+                                                <input type="text" class="form-control w-100 input-sm" id="sendSmsType" name="sendSmsType" value="0" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="telphone" class="control-label text-left pull-left w-150">e信发送类型值：</label>
+                                            <div class="col required pull-left">
+                                                <input type="text" class="form-control w-100 input-sm" id="sendEmsType" name="sendEmsType" value="1" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="telp" class="control-label text-left pull-left w-150">发送任务创建时间：</label>
+                                            <div class="col required pull-left">
+                                                <input type="text" class="form-control w-100 input-sm" id="createTime" name="createTime" value="createTime" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="quest" class=" control-label text-left  pull-left w-150">任务状态：</label>
+                                            <div class="col required pull-left">
+                                                <input type="text" class="form-control w-100 input-sm" id="status" name="status" value="status" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                     <li>
+                                        <div class="form-group">
+                                            <label for="quest" class=" control-label text-left  pull-left w-150">任务已执行状态值：</label>
+                                            <div class="col required pull-left">
+                                                <input type="text" class="form-control w-100 input-sm" id="sendedStatus" name="sendedStatus" value="1" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                     <li>
+                                        <div class="form-group">
+                                            <label for="quest" class=" control-label text-left  pull-left w-150">任务未执行状态值：</label>
+                                            <div class="col required pull-left">
+                                                <input type="text" class="form-control w-100 input-sm" id="unSendStatus" name="unSendStatus" value="0" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="quest" class=" control-label text-left  pull-left w-150">任务发送失败状态值：</label>
+                                            <div class="col required pull-left">
+                                                <input type="text" class="form-control w-100 input-sm" id="sendFailStatus" name="sendFailStatus" value="2" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="telp" class="control-label text-left pull-left w-150">发送流水号：</label>
+                                            <div class="col required pull-left">
+                                                <input type="text" class="form-control w-100 input-sm" id="serialNumber" name="serialNumber" value="serialnumber" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="telp" class="control-label text-left pull-left w-150">发送任务编号：</label>
+                                            <div class="col required pull-left">
+                                                <input type="text" class="form-control w-100 input-sm" id="taskId" name="taskId" value="taskId" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="telp" class="control-label text-left pull-left w-150">短信模板：</label>
+                                            <div class="col required pull-left">
+                                                <input type="text" class="form-control w-100 input-sm" id="textTemplateId" name="textTemplateId" value="smsModel" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="telp" class="control-label text-left pull-left w-150">e信素材Id：</label>
+                                            <div class="col required pull-left">
+                                                <input type="text" class="form-control w-100 input-sm" id="mediaId" name="mediaId" value="emsId" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="telp" class="control-label text-left pull-left w-150">e信素材Url：</label>
+                                            <div class="col required pull-left">
+                                                <input type="text" class="form-control w-100 input-sm" id="mediaUrl" name="mediaUrl" value="emsURL" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="telp" class="control-label text-left pull-left w-150">e信上行回复数据：</label>
+                                            <div class="col required pull-left">
+                                                <input type="text" class="form-control w-100 input-sm" id="replyContent" name="replyContent" value="replyContent" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                     <li id="sonStr">
+                                        <div class="form-group" >
+                                            <label for="telp" class="control-label text-left pull-left w-100">占位符：</label>
+                                            <div class="col required pull-left">
+                                                <input type="text" class="form-control w-100 input-sm" name="strKey" placeholder="">
+                                            </div>
+                                            <div class="col required pull-left">
+                                                <input type="text" class="form-control w-100 input-sm" name="strValue" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <a id="lis" onclick="addRow();">新增</a>|<a id="lis" onclick="removeRow();">删除</a>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-right m-tab p-t-20">
+                    <button id="sevenup" type="button" onclick="wstepsevenup();" class="btn btn-cons btn-default m-r-10">上一步</button>
+                    <button id="sevendown" type="button" onclick="wstepsevendown();" class="btn btn-cons btn-primary">下一步</button>
+                </div>
+            </div>
+            <!--数据库字段修改 e-->
+            <!--成功 s-->
+            <div id="succ" class="box p-t-20 " style="display:none;">
+                <div class="padding-40 succ">
+                    <div class="text-center">
+                        <p class="p-t-60 clearfix w-330 marginauto"><i class="ep ep-success font100 c-green pull-left"></i><span class="font24 c-gray m-t-55 inline pull-left">恭喜你，安装成功！</span></p>
+                        <p class="p-t-60"><a href="${dynamicDomain}/backstage/index"><i class="ep ep-set p-r-5"></i>配置后台</a></p>
+                    </div>
+                </div>
+            </div>
+            <!--成功 e-->
+            <!--失败 s-->
+            <div id="fail" class="box p-t-20 " style="display:none;">
+                <div class="padding-40 fale">
+                    <div class="text-center">
+                        <p class="p-t-60 c-red clearfix w-330 marginauto"><i class="ep ep-danger font100 p-r-20  pull-left"></i><span class="font24 inline pull-left m-t-44">安装出错</span></p>
+                        <p class="p-t-40">安装过程出现错误，请检测您的环境重新安装，或下载安装日志，
+                            <br/> 发送到技术邮箱
+                            <a href="###">XXXX@XX.com</a></p>
+                    </div>
+                    <div class="daydown"><a href="${dynamicDomain}/backstage/downLog">日志下载</a></div>
+                </div>
+            </div>
+            <!--失败 e-->
+        </div>
+     </div>
+        <!--vendor js -->
+        <script src="${dynamicDomain}/static/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+        <script src="${dynamicDomain}/static/js/bootstrap.js" type="text/javascript"></script>
+        <script src="${dynamicDomain}/static/js/ep6.js"></script>
+</body>
+<script type="text/javascript">
+
+  var _data = {
+		    spCode:"",
+		    cName:"",
+		    key:"",
+		    dbUrl:"",
+		    dbDriver:"",
+		    dbUser:"",
+		    dbPasswd:"",
+		    sendSMSUrl:"",
+		    sendEMSUrl:"",
+		    getTaskUrl:"",
+		    listReply:"",
+		    smsSendTable:"",
+		    messageContent:"",
+		    sendToMobile:"",
+		    id:"",
+		    planTime:"",
+		    sendType:"",
+		    sendSmsType:"",
+		    sendEmsType:"",
+		    createTime:"",
+		    status:"",
+		    sendedStatus:"",
+		    unSendStatus:"",
+		    sendFailStatus:"",
+		    serialNumber:"",
+		    taskId:"",
+		    textTemplateId:"",
+		    mediaId:"",
+		    mediaUrl:"",
+		    replyContent:"",
+		    dynamicJson:""
+  };
+  
+  //登陆
+  function login(){
+    var _checkData = {
+    	spcode:"",
+    	cname:"",
+    	key:""	
+    };
+    var spCode = $("#spCode").val();
+    if(spCode==""){
+    	alert("企业编号不能为空");
+    	return;
+    }
+    _checkData.spcode=spCode;
+    var cName = $("#cName").val();
+    if(cName==""){
+    	alert("用户名不能为空");
+    	return;
+    }
+    _checkData.cname=cName;
+    var key = $("#key").val();
+    if(key==""){
+    	alert("密码不能为空");
+    	return;
+    }
+    _checkData.key=key;
+    $.ajax({
+	  url:  "${dynamicDomain}/login/check",
+	  type: "post",
+	  data: _checkData,
+	  success: function(res) {
+		  if(res.returnCode=="200"){
+			  
+			  $("#logindve").hide("slow",function(){
+				  _data.spCode=spCode;
+				  _data.cName=cName;
+				  _data.key=key;
+				  
+				  $("#startbtn").removeAttr("disabled");
+			  });
+		
+		  }
+		  if(res.returnCode=="001"){
+			  alert("验证用户信息地址配置错误");
+		  }
+		  if(res.returnCode=="002"){
+			  alert("验证用户信息不存在,请确认");
+		  }
+          if(res.returnCode=="003"){
+			  alert("验证请求数据异常，请重试");
+		  }
+	    }
+    });
+  }
+  
+  //开始安装按钮事件
+  function startins(){
+	 $("#wstepone").removeClass("hover");
+	 $("#wstepone").addClass("prev");
+	 $("#wsteptwo").removeClass("next");
+	 $("#wsteptwo").addClass("prev");
+	 $("#wstepthree").removeClass("next");
+	 $("#wstepthree").addClass("prev");
+	 $("#wstepfour").removeClass("next");
+	 $("#wstepfour").addClass("hover");
+	 $("#one").hide();
+	 $("#four").show(function(){
+		 
+		$.ajax({
+			  url:  "${dynamicDomain}/login/checkFilePermssion",
+			  type: "post",
+			  data: "",
+			  success: function(res) {
+				  if(res.returnCode=="200"){
+				      var result = res.result;
+				      $.each(result,function(i,n){
+				    	  var fname = n.filename;
+				    	  var permission = n.permission;
+				    	  var kws="";
+				    	 if(permission=='w'){
+				    		 kws="可写";
+				    	 }
+				    	 if(permission=="r"){
+				    		 kws="可读";
+				    	 }
+				    	 if(permission=="rw"||permission=="wr"){
+				    		 kws="可读写";
+				    	 }
+				    	  var pf = $("#filePermission");
+				    	  pf.empty();
+				    	  pf.append("<tr>"
+                                  +"<td>"
+                                  +fname
+                                  +"</td>"
+                                  +"<td>可写</td>"
+                                  +"<td><i class='ep ep-success c-green large-text'></i>"
+                                  +kws
+                                  +"</td>"
+                                  +"</tr>");
+				      });
+				  }
+				  if(res.returnCode=="005"){
+					  alert("文件权限校验出现异常");
+				  }
+			    }
+		    });  
+	 });
+  }
+  //wstepfour上一步事件
+  function wstepfourup(){
+	  $("#wstepfour").removeClass("hover");
+	  $("#wstepfour").addClass("next");
+	  $("#wstepthree").removeClass("prev");
+	  $("#wstepthree").addClass("next");
+	  $("#wsteptwo").removeClass("prev");
+	  $("#wsteptwo").addClass("next");
+	  $("#wstepone").removeClass("prev");
+	  $("#wstepone").addClass("hover");
+	  $("#four").hide();
+	  $("#one").show();
+	  
+  }
+  //wstepfour下一步事件
+  function wstepfourdown(){
+	  $("#wstepfour").removeClass("hover");
+	  $("#wstepfour").addClass("prev");
+	  $("#wstepfive").removeClass("next");
+	  $("#wstepfive").addClass("hover");
+	  $("#four").hide();
+	  $("#five").show();
+  }
+  //wstepfive数据库连接信息配置页面上一步事件
+  function wstepfiveup(){
+	  $("#wstepfive").removeClass("hover");
+	  $("#wstepfive").addClass("next");
+	  $("#wstepfour").removeClass("prev");
+	  $("#wstepfour").addClass("hover");
+	  $("#five").hide();
+	  $("#four").show();
+  }
+  //wstepfive数据库连接信息配置页面下一步事件
+  function wstepfivedown(){
+	  var dbUrl = $("#dbUrl").val();
+	  if(dbUrl==""){
+		  alert("数据库地址不能为空");
+		  return;
+	  }
+	  var dbDriver = $("#dbDriver").val();
+	  if(dbDriver==""){
+		  alert("数据库驱动不能为空");
+		  return;
+	  }
+	  var dbUser = $("#dbUser").val();
+	  if(dbUser==""){
+		  alert("用户名不能为空");
+		  return;
+	  }
+	  var dbPasswd = $("#dbPasswd").val();
+	  if(dbPasswd==""){
+		  alert("密码不能为空");
+		  return;
+	  }
+	  _data.dbUrl=dbUrl;
+	  _data.dbDriver=dbDriver;
+	  _data.dbUser=dbUser;
+	  _data.dbPasswd=dbPasswd;
+	  
+	  $("#wstepfive").removeClass("hover");
+	  $("#wstepfive").addClass("prev");
+	  $("#wstepsix").removeClass("next");
+	  $("#wstepsix").addClass("hover");
+	  $("#five").hide();
+	  $("#six").show();
+  }
+  //wstepsix上接口配置页面一步事件
+   function wstepsixup(){
+	  $("#wstepsix").removeClass("hover");
+	  $("#wstepsix").addClass("next");
+	  $("#wstepfive").removeClass("prev");
+	  $("#wstepfive").addClass("hover");
+	  $("#six").hide();
+	  $("#five").show();
+  }
+  //wstepsix接口配置页面下一步事件
+  function wstepsixdown(){
+	  var sendSMSUrl = $("#sendSMSUrl").val();
+	  if(sendSMSUrl==""){
+		  alert("发送短信url不能为空");
+		  return;
+	  }
+	  var sendEMSUrl = $("#sendEMSUrl").val();
+	  if(sendEMSUrl==""){
+		  alert("发送e信url不能为空");
+		  return;  
+	  }
+	  var getTaskUrl = $("#getTaskUrl").val();
+	  if(getTaskUrl==""){
+		  alert("查询发送结果url不能为空");
+		  return;
+	  }
+	  var listReply  = $("#listReply").val();
+	  if(listReply==""){
+		  alert("查询上行回复结果url不能为空");
+		  return;
+	  }
+	  _data.sendSMSUrl=sendSMSUrl;
+	  _data.sendEMSUrl=sendEMSUrl;
+	  _data.getTaskUrl=getTaskUrl;
+	  _data.listReply=listReply;
+	  
+	  $("#wstepsix").removeClass("hover");
+	  $("#wstepsix").addClass("prev");
+	  $("#wstepseven").removeClass("next");
+	  $("#wstepseven").addClass("hover");
+	  $("#six").hide();
+	  $("#seven").show();
+  }
+  //wstepseven字段名修改页面上一步事件
+  function wstepsevenup(){
+	  $("#wstepseven").removeClass("hover");
+	  $("#wstepseven").addClass("next");
+	  $("#wstepsix").removeClass("prev");
+	  $("#wstepsix").addClass("hover");
+	  $("#seven").hide();
+	  $("#six").show();
+  }
+  //wstepseven字段名修改页面下一步事件
+  function wstepsevendown(){
+	  var smsSendTable=$("#smsSendTable").val();
+	  if(smsSendTable==""){
+		  alert("信息发送表名不能为空");
+		  return;
+	  }
+	  var messageContent=$("#messageContent").val();
+	  if(messageContent==""){
+		  alert("短信内容不能为空");
+		  return;
+	  }
+	  var sendToMobile=$("#sendToMobile").val();
+	  if(sendToMobile==""){
+		  alert("要发送的号码不能为空");
+		  return;
+	  }
+	  var id=$("#id").val();
+	  if(id==""){
+		  alert("唯一键值不能为空");
+		  return;
+	  }
+	  var planTime=$("#planTime").val();
+	  if(planTime==""){
+		  alert("定时发送时间不能为空");
+		  return;
+	  }
+	  var sendType=$("#sendType").val();
+	  if(sendType==""){
+		  alert("发送类型不能为空");
+		  return;
+	  }
+	  var sendSmsType=$("#sendSmsType").val();
+	  if(sendSmsType==""){
+		  alert("短信发送类型值不能为空");
+		  return;
+	  }
+	  var sendEmsType=$("#sendEmsType").val();
+	  if(sendEmsType==""){
+		  alert("e信发送类型值不能为空");
+		  return;
+	  }
+	  
+	  if(sendSmsType==sendEmsType){
+		  alert("e信发送类型值和短信发送类型值不能相同");
+		  return;
+	  }
+	  
+	  var createTime=$("#createTime").val();
+	  if(createTime==""){
+		  alert("发送任务创建时间不能为空");
+		  return;
+	  }
+	  var status=$("#status").val();
+	  if(status==""){
+		  alert("任务状态不能为空");
+		  return;
+	  }
+	  var sendedStatus=$("#sendedStatus").val();
+	  if(sendedStatus==""){
+		  alert("任务已执行状态值不能为空");
+		  return;
+	  }
+	  var unSendStatus=$("#unSendStatus").val();
+	  if(unSendStatus==""){
+		  alert("任务未执行状态值不能为空");
+		  return;
+	  }
+	  var sendFailStatus=$("#sendFailStatus").val();
+	  if(sendFailStatus==""){
+		  alert("任务发送失败状态值不能为空");
+		  return;
+	  }
+	  
+	  if(sendedStatus==unSendStatus){
+		  alert("任务已执行状态值不能和未执行状态值相同");
+		  return;
+	  }
+	  if(sendedStatus==sendFailStatus){
+		  alert("任务已执行状态值不能和发送失败状态值相同");
+		  return;
+	  }
+	  if(unSendStatus==sendFailStatus){
+		  alert("任务未执行状态值不能和任务发送失败状态值相同");
+		  return;
+	  }
+	  
+	  var serialNumber=$("#serialNumber").val();
+	  if(serialNumber==""){
+		  alert("发送流水号不能为空");
+		  return;
+	  }
+	  var taskId=$("#taskId").val();
+	  if(taskId==""){
+		  alert("发送任务编号不能为空");
+		  return;
+	  }
+	  var textTemplateId=$("#textTemplateId").val();
+	  if(textTemplateId==""){
+		  alert("短信模板不能为空");
+		  return;
+	  }
+	  var mediaId=$("#mediaId").val();
+	  if(mediaId==""){
+		  alert("e信素材Id不能为空");
+		  return;
+	  }
+	  var mediaUrl=$("#mediaUrl").val();
+	  if(mediaUrl==""){
+		  alert("e信素材Url不能为空");
+		  return;
+	  }
+	  
+	  var replyContent = $("#replyContent").val();
+	  if(replyContent==""){
+		  alert("e信上行回复数据不能为空");
+		  return;
+	  }
+	  
+	  //获取占位符信息
+	   getSonStr();
+	  
+	  _data.smsSendTable=smsSendTable;
+	  _data.messageContent=messageContent;
+	  _data.sendToMobile=sendToMobile;
+	  _data.id=id;
+	  _data.planTime=planTime;
+	  _data.sendType=sendType;
+	  _data.sendSmsType=sendSmsType;
+	  _data.sendEmsType=sendEmsType;
+	  _data.createTime=createTime;
+	  _data.status=status;
+	  _data.sendedStatus=sendedStatus;
+	  _data.unSendStatus=unSendStatus;
+	  _data.serialNumber=serialNumber;
+	  _data.taskId=taskId;
+	  _data.textTemplateId=textTemplateId;
+	  _data.mediaId=mediaId;
+	  _data.mediaUrl=mediaUrl;
+	  _data.sendFailStatus=sendFailStatus;
+	  _data.replyContent=replyContent;
+	  
+	  $("#wstepseven").removeClass("hover");
+	  $("#wstepseven").addClass("prev");
+	  $("#wstepeight").removeClass("next");
+	  $("#wstepeight").addClass("hover");
+	  $("#seven").hide();
+	  $("#progressbar").show();
+	  
+	  //进度条定时器
+	  var count = 0;
+	  var idInt = setInterval(function(){
+		  var wd = 0;
+		  wd +=count;
+		  $("#prb").css("width",wd+"%");
+		  if(wd==100){
+			  clearInterval(idInt);//关闭定时器
+		  }else{
+		      count+=1;
+		  }
+	  },100);
+	  
+	  //等待验证参数
+	  $.ajax({
+		  url:  "${dynamicDomain}/login/checkParameter",
+		  type: "post",
+		  dataType: "json",
+		  data: _data,
+		  success: function(res) {
+				  $("#wstepeight").removeClass("hover");
+				  $("#wstepeight").addClass("prev");
+				  $("#wstepnine").removeClass("next");
+				  $("#wstepnine").addClass("hover");
+			  if(res.returnCode=="200"){
+				  $("#succ").show("slow");
+				  $("#prb").css("width","100%");
+				  clearInterval(idInt);
+			  }else{
+                  $("#fail").show("slow");
+                  clearInterval(idInt);
+			  }
+		    }
+	    }); 
+  }
+//新增一行占位符
+  function addRow(){
+	 $("#lis").before($("#sonStr").clone());
+  } 
+//删除一行占位符
+  function removeRow(){
+	  var strkey = $("input[name='strKey']"); 
+	  if(strkey.length>1){
+	     $("#sonStr:last").remove();
+	  }
+ }
+//获取动态子串	  
+ function  getSonStr(){
+	 
+    var strkey = $("input[name='strKey']"); 
+	var strvalue = $("input[name='strValue']"); 
+	 
+	var legth = strkey.length;
+	var lgdth = strvalue.length;
+	var sarr = new Array();
+	 if((legth>0)&&(lgdth>0)){
+		 
+		 var flags="F";
+		 
+		 var j=0;
+		 for(var i=0;i<legth;i++){
+			 var skobj = strkey.get(i).value;
+			 var svobj = strvalue.get(i).value;
+			 if(skobj!=""&&svobj!=""){
+				 flags = "T";
+	            var jsonStr ={
+			         skey:"",
+			         svalue:""
+	            };
+				jsonStr.skey=skobj;
+				jsonStr.svalue=svobj;
+				sarr[j]=jsonStr;
+				j++;
+			 }
+		 }
+		 if(flags=='T'){
+		     var sonstr = serialize(sarr)
+		     _data.dynamicJson=sonstr;
+		 }else{
+			 _data.dynamicJson=""; 
+		 }
+		 
+	 }
+   }
+
+ function serialize(o)
+ {
+     var result = "";
+     var tempResult = [];
+     if(o instanceof Array){
+         for(var i = 0 ; i < o.length ; i ++)
+         {
+             tempResult.push(serialize(o[i]));
+         }
+         result = '['+tempResult.join(',')+']';
+     }
+     else
+     {
+         for(var key in o)
+         {
+             if(o[key] instanceof Array) tempResult.push("\""+key+"\""+":"+serialize(o[key]));
+             else tempResult.push("\""+key+"\""+":"+"\""+o[key]+"\"");
+         }
+         result = '{'+tempResult.join(',')+'}'
+     }
+     return result;
+ }
+</script>
+</html>

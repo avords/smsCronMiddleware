@@ -1,0 +1,620 @@
+@font-face {
+    font-family: 'epfont';
+    src: url('../fonts/iconfont/iconfont.eot');
+    /* IE9*/
+    src: url('../fonts/iconfont/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/iconfont/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('../fonts/iconfont/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../fonts/iconfont/iconfont.svg#iconfont') format('svg');
+    /* iOS 4.1- */
+}
+
+
+
+/*.ep{
+    font-family:"epfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}*/
+
+.ep {
+    display: inline-block;
+    font: normal normal normal 14px/1 "epfont";
+    font-family: "epfont" !important;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    /*-webkit-text-stroke-width: 0.2px;*/
+    -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="ep-"],
+[class*="ep-"] {
+    display: inline-block;
+    font: normal normal normal 14px/1 "epfont";
+    font-family: "epfont" !important;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    /*-webkit-text-stroke-width: 0.2px;*/
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+/*弹出层*/
+
+
+/*成功*/
+
+.ep-success:before  {
+    content: "\e60f";
+}
+
+
+/*提示*/
+
+.ep-info:before  {
+    content: "\e608";
+}
+
+
+/*警告*/
+
+.ep-warning:before  {
+    content: "\e603";
+}
+
+
+/*错误*/
+
+.ep-danger:before  {
+    content: "\e613";
+}
+
+.ep-danger-thin:before  {
+    content: "\e613";
+}
+
+/*疑问*/
+
+.ep-question:before  {
+    content: "\e60a";
+}
+
+/*小三角*/
+.ep-arrow-up:before{
+  content: "\e607";
+}
+
+.ep-arrow-down:before{
+  content: "\e609";
+}
+
+.ep-arrow-left:before{
+  content: "\e60c";
+}
+
+.ep-arrow-right:before{
+  content: "\e60b";
+}
+
+/*展开*/
+.ep-down:before{
+  content: "\e614";
+}
+
+/*收起*/
+.ep-up:before{
+  content: "\e615";
+}
+
+/*左侧（收起、展开、小圆点）*/
+.ep-side-hide:before{
+   content: "\e61b";
+}
+.ep-side-show:before{
+   content: "\e61a";
+}
+.ep-side-circle:before{
+   content: "\e619";
+}
+
+/*编辑*/
+.ep-edit:before {
+    content: "\e600";
+}
+/*下载*/
+.ep-download:before{
+    content: "\e602";
+}
+
+/*发送*/
+.ep-send:before{
+    content: "\e62a";
+}
+
+/*预览*/
+.ep-preview:before{
+    content: "\e62b";
+}
+
+/*数据*/
+.ep-data:before{
+    content: "\e62c";
+}
+
+/*更多*/
+.ep-more:before{
+    content: "\e62f";
+}
+
+/*分享*/
+.ep-share:before{
+    content: "\e62d";
+}
+
+/*报表*/
+.ep-chart:before{
+    content: "\e642";
+}
+
+/*复制*/
+.ep-copy:before{
+    content: "\e62e";
+}
+
+/*删除*/
+.ep-delete:before{
+    content: "\e606";
+}
+
+/*用户*/
+.ep-user:before{
+    content: "\e627";
+}
+/*企业*/
+.ep-comp:before{
+    content: "\e628";
+}
+/*密码*/
+.ep-password:before{
+    content: "\e629";
+}
+/*手机*/
+.ep-mobile:before{
+    content: "\e626";
+}
+
+/*扫一扫*/
+.ep-saoyisao:before{
+    content: "\e605";
+}
+
+/*搜索*/
+.ep-search:before{
+    content: "\e616";
+}
+
+/*加号*/
+.ep-add:before{
+    content: "\e624";
+}
+
+.ep-add-thin:before{
+    content: "\e64e";
+}
+
+/*时间*/
+.ep-time:before{
+    content: "\e63a";
+}
+
+/*近期发送情况*/
+.ep-jinqifasong:before{
+    content: "\e63b";
+}
+
+/*权限修改*/
+.ep-quanxianxiugai:before{
+    content: "\e63c";
+
+}
+
+/*返回*/
+.ep-back:before{
+    content: "\e622";
+}
+
+/*日期*/
+.ep-date:before{
+    content: "\e61e";
+}
+
+/*删除行*/
+.ep-delete-row:before{
+    content: "\e623";
+}
+
+/*动态数据*/
+.ep-dynamic-data:before{
+    content: "\e651";
+}
+
+/*详情*/
+.ep-detail:before{
+    content: "\e630";
+}
+
+/*QQ*/
+.ep-qq:before{
+    content: "\e617";
+}
+
+/*客服*/
+.ep-service:before{
+    content: "\e612";
+}
+
+/*帮助*/
+.ep-help:before{
+    content: "\e611";
+}
+
+/*电话*/
+.ep-tel:before{
+    content: "\e618";
+}
+
+/*回到顶部*/
+.ep-back-to-top:before{
+    content: "\e60d";
+}
+
+/*模板*/
+.ep-template:before{
+   content: "\e675"; 
+}
+
+/*授权*/
+.ep-authorization:before{
+   content: "\e676"; 
+}
+
+/*can.zhang*/
+/*计费类型*/
+.ep-jifeileixing:before{
+    content: '\e63d';
+}
+
+/*状态*/
+.ep-zhuangtai:before{
+    content: '\e63f';
+}
+
+/*行业*/
+.ep-xingye:before{
+    content: '\e646';
+}
+
+/*关闭*/
+.ep-guanbi:before,.ep-close:before{
+    content: '\e643';
+}
+
+
+/*增加*/
+.ep-zengjia:before{
+    content: '\e624';
+}
+
+/*启用,开启*/
+.ep-qidong:before{
+    content: '\e635';
+}
+
+/*禁用*/
+.ep-jinyong:before{
+    content: '\e645';
+}
+
+/*余额*/
+.ep-yue:before{
+    content: '\e63e';
+}
+
+/*右箭头*/
+.ep-youjiantou:before{
+    content: '\e60b';
+}
+
+/*查看*/
+.ep-chakan:before{
+    content: '\e60e';
+}
+
+/*白名单*/
+.ep-whitelist:before{
+    content: '\e64b';
+}
+
+/*黑名单*/
+.ep-blacklist:before{
+    content: '\e64a';
+}
+
+/*查看*/
+.ep-view:before{
+    content: '\e60e';
+}
+
+/*消息*/
+.ep-news:before{
+    content: '\e610';
+}
+
+/*消息类型*/
+.ep-newstype:before{
+    content: '\e654';
+}
+
+/*导出*/
+.ep-export:before{
+    content: '\e652';
+}
+
+/*发送方式*/
+.ep-sendmode:before{
+    content: '\e653';
+}
+
+/*回复*/
+.ep-reply:before{
+    content: '\e650';
+}
+
+/*微信*/
+.ep-weixin:before{
+    content: '\e655';
+}
+
+/*重发*/
+.ep-zhongfa:before{
+    content: '\e64d';
+}
+
+/*明细*/
+.ep-mingxi:before{
+    content: '\e630';
+}
+/*购物车*/
+.ep-shoppingcar:before{
+    content: '\e657';
+}
+
+/*二维码*/
+.ep-erweima:before{
+    content: '\e659';
+}
+
+/*中奖记录*/
+.ep-zhongjiang:before{
+    content: '\e658';
+}
+
+/*邀请*/
+.ep-invite:before{
+    content: '\e65b';
+}
+
+/*移动*/
+.ep-move:before{
+    content: '\e65a';
+}
+
+
+/*文本*/
+.ep-text:before{
+    content: '\e61f';
+}
+/*视频*/
+.ep-video:before{
+    content: '\e663';
+}
+
+/*语音*/
+.ep-voice:before{
+    content: '\e662';
+}
+/*图片*/
+.ep-pic:before{
+    content: '\e65c';
+}
+/*图文*/
+.ep-pictext:before{
+    content: '\e65d';
+}
+/*短信*/
+.ep-mes:before{
+    content: '\e661';
+}
+/*微信*/
+.ep-wechat:before{
+    content: '\e655';
+}
+/*客户端*/
+.ep-app:before{
+    content: '\e65e';
+}
+/*e信*/
+.ep-exin:before{
+    content: '\e660';
+}
+/*彩信*/
+.ep-caixin:before{
+    content: '\e65f';
+}
+
+/*生日*/
+.ep-brithday:before{
+    content: '\e64c';
+}
+/*失败*/
+.ep-fail:before{
+    content: '\e664';
+}
+/*发送方式*/
+.ep-sendfile:before{
+    content: '\e653';
+}
+
+/*期刊管理*/
+.ep-qkem:before{
+    content: '\e669';
+}
+
+
+/*链接*/
+.ep-link:before{
+    content: '\e668';
+}
+/*设置*/
+.ep-set:before{
+    content: '\e665';
+}
+/*发布*/
+.ep-release:before{
+    content: '\e667';
+}
+/*驳回*/
+.ep-reject:before{
+    content: '\e666';
+}
+/*数字*/
+.ep-nums:before{
+    content: "\e620";
+}
+
+/*单选*/
+.ep-radio:before{
+    content: "\e61d";
+}
+/*多选*/
+.ep-check:before{
+    content: "\e61c";
+}
+/*通讯录*/
+.ep-contact:before{
+    content: "\e625";
+}
+
+/*审核*/
+.ep-examine:before{
+	content: "\e639";
+	}
+	
+/*保存*/
+.ep-save:before{
+    content: "\e621";
+}
+/*文件上传*/
+.ep-file-up:before{
+    content: "\e601";
+}
+
+/*留言*/
+.ep-leave-mes:before{
+    content: "\e66c";
+}
+/*统计*/
+.ep-statistics:before{
+    content: "\e66d";
+}
+/*投影*/
+.ep-project:before{
+    content: "\e66f";
+}
+
+/*管理*/
+.ep-manage:before{
+    content: "\e671";
+}
+
+/*通知*/
+.ep-notice:before{
+    content: "\e672";
+}
+
+/*星标*/
+.ep-star:before{
+    content: "\e674";
+}
+
+/*标签组*/
+.ep-labelgroup:before{
+    content: "\e673";
+}
+/*slide left*/
+.ep-left:before{
+    content: "\e678";
+}
+/*slide right*/
+.ep-right:before{
+    content: "\e677";
+}
+/*square*/
+.ep-square:before{
+    content: "\e67a";
+}
+/*list*/
+.ep-list:before{
+    content: "\e679";
+}
+/*部门*/
+.ep-depa:before {
+  content: "\e638";
+}
+/*个人明细*/
+.ep-persDeta:before {
+  content: "\e640";
+}
+/*信息问卷加*/
+.ep-info-quest:before {
+  content: "\e641";
+}
+
+/*置顶*/
+.ep-top:before {
+  content: "\e60d";
+}
+
+/*附件*/
+.ep-attach:before{
+  content: "\e67b";  
+}
+
+/*审核中*/
+.ep-audit:before{
+  content: "\e66e";  
+}
+/*收藏实心*/
+.ep-keep:before{
+  content: "\e67c";  
+}
+/*收藏 空心*/
+.ep-keep-empty:before{
+  content: "\e67d";  
+}
+/*认证*/
+.ep-authentication:before{
+  content: "\e64f";  
+}
+/*模板*/
+.ep-template:before{
+  content: "\e67e";  
+}
+/*发送方式*/
+.ep-send-way:before{
+  content: "\e653";  
+}

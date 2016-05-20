@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <title>ep6.0</title>
+    <!-- common css -->
+    <link rel="stylesheet" href="${dynamicDomain}/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${dynamicDomain}/static/css/main.css">
+    <link rel="stylesheet" href="${dynamicDomain}/static/css/ep-icon.css">
+    <!-- page css (根据页面需要进行增加)-->
+    <link rel="stylesheet" href="${dynamicDomain}/static/css/financeportal.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="cw">
+            <div class="pull-left">
+                <div class="header-inner">
+                    <div class="logo inline"> <img src="${dynamicDomain}/static/img/logo.png" alt="logo"> </div>
+                    <h1 class="logo-text inline"> 一信通企业信息管理平台 <span class="sub-logo"> <img src="" alt="logo"> <span class="text">金融行业中间件应用中心</span> </span> </h1>
+                </div>
+            </div>
+<!--             <div class="pull-right"> -->
+<!--                 <div class="profile"> -->
+<!--                     <div class="btn-group"> -->
+<!--                         <button type="button" class="profile-dropdown-toggle dropdown-toggle" data-toggle="dropdown"> xxx <span class="c-white"> 欢迎您！ <i class="ep ep-arrow-down"></i> </span> </button> -->
+<!--                         <div class="dropdown-menu profile-dropdown"> -->
+<!--                             <div class="user-infor"> <img src="${dynamicDomain}/static/img/user.png" class="figure pull-left" height="60" width="60" alt=""> -->
+<!--                                 <div class="details"> -->
+<!--                                     <p>周启航的演示账号</p> -->
+<!--                                     <p>123456789 <a href="#" class="pull-right">切换企业</a></p> -->
+<!--                                 </div> -->
+<!--                                 <div class="links clearfix"> <a href="#">账户中心</a> <a href="#" class="text-center">账务中心</a> <a href="#" class="text-right">退出</a> </div> -->
+<!--                             </div> -->
+<!--                         </div> -->
+<!--                     </div> -->
+<!--                 </div> -->
+<!--             </div> -->
+        </div>
+    </div>
+    <div class="navigation">
+        <div class="cw">
+            <ul class="nav-cont">
+                <li> 
+                	<a href="#" class="hover">工作台</a> 
+<!--                 	<a href="#" class="hover">工作台工台</a>  -->
+<!--                 	<a href="#">工作台工作台</a>  -->
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="cw">
+            <div class="pos p-t-20 p-b-5"> 您当前的位置：<a href="#">中间件配置台</a>&gt;&gt;<a href="#">数据库字段名更改</a> </div>
+            <div class="wrap">
+                <!--如果没有左侧side，这里增加no-side类即可 -->
+                <div class="side pull-left">
+                    <div class="side-inner">
+                        <ul>
+                            <li>
+                                <h3><a href="javascript:window.location.href='${dynamicDomain}/backstage/index';"><i class="ep ep-side-hide"></i>后台配置首页</a></h3>
+                            </li>
+<!--                             <li> -->
+<!--                                 <h3><a href="javascript:window.location.href='${dynamicDomain}/backstage/environmentCheck';"><i class="ep ep-side-hide"></i>环境检测</a></h3> -->
+<!--                             </li> -->
+                            <li>
+                                <h3><a href="javascript:window.location.href='${dynamicDomain}/backstage/fileCheck';"><i class="ep ep-side-hide"></i>文件权限检测</a></h3>
+                            </li>
+                            <li>
+                                <h3><a href="javascript:window.location.href='${dynamicDomain}/backstage/databaseConfig';"><i class="ep ep-side-hide"></i>数据库配置</a></h3>
+                            </li>
+                            <li>
+                                <h3><a href="javascript:window.location.href='${dynamicDomain}/backstage/interfaceConfig';"><i class="ep ep-side-hide"></i>接口配置</a></h3>
+                            </li>
+                            <li class="hover">
+                                <h3><a href="javascript:window.location.href='${dynamicDomain}/backstage/columnUpdate';"><i class="ep ep-side-hide"></i>数据库字段名更改</a></h3>
+                            </li>
+                            <li>
+                                <h3><a href="javascript:window.location.href='${dynamicDomain}/backstage/introduction';"><i class="ep ep-side-hide"></i>升级说明</a></h3>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="main-wrap">
+                	<form id="columnForm" action="${dynamicDomain}/backstage/saveColumn" method="post">
+                    <div class="main">
+                        <!-- <div class="checkdemo"><span>数据库字段修改</span></div> -->
+                        <h2 class=" border-left-width border-left-solid bd-primary m-b-10 large-text p-l-10">数据库字段修改</h2>
+                        <div class="data dataul">
+                            <div class="form-horizontal">
+                                <ul class="clearfix">
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="smsSendTable" class=" control-label text-left  pull-left w-120">信息发送表名：</label>
+                                            <div class="col pull-left">
+                                                <input value="${message.getSmsSendTable()}" type="text" class="form-control w-300 input-sm" name="smsSendTable" id="smsSendTable" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="messageContent" class="control-label text-left pull-left w-120">短信内容：</label>
+                                            <div class="col pull-left">
+                                                <input value="${message.getMessageContent()}" type="text" class="form-control w-300 input-sm" name="messageContent" id="messageContent" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="sendToMobile" class="control-label text-left pull-left w-120">要发送的号码：</label>
+                                            <div class="col pull-left">
+                                                <input value="${message.getSendToMobile()}" type="text" class="form-control w-300 input-sm" name="sendToMobile" id="sendToMobile" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="id" class=" control-label text-left  pull-left w-120">唯一键值：</label>
+                                            <div class="col pull-left">
+                                                <input value="${message.getId()}" type="text" class="form-control w-300 input-sm" name="id" id="id" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="planTime" class="control-label text-left pull-left w-120">定时发送时间：</label>
+                                            <div class="col pull-left">
+                                                <input value="${message.getPlanTime()}" type="text" class="form-control w-300 input-sm" name="planTime" id="planTime" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="sendType" class="control-label text-left pull-left w-120">发送类型：</label>
+                                            <div class="col pull-left">
+                                                <input value="${message.getSendType()}" type="text" class="form-control w-300 input-sm" name="sendType" id="sendType" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="sendSmsType" class="control-label text-left pull-left w-120">短信发送类型：</label>
+                                            <div class="col pull-left">
+                                                <input value="${message.getSendSmsType()}" type="text" class="form-control w-300 input-sm" name="sendSmsType" id="sendSmsType" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="sendEmsType" class="control-label text-left pull-left w-120">e信发送类型：</label>
+                                            <div class="col pull-left">
+                                                <input value="${message.getSendEmsType()}" type="text" class="form-control w-300 input-sm" name="sendEmsType" id="sendEmsType" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="createTime" class=" control-label text-left  pull-left w-120">任务创建时间：</label>
+                                            <div class="col pull-left">
+                                                <input value="${message.getCreateTime()}" type="text" class="form-control w-300 input-sm" name="createTime" id="createTime" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="status" class="control-label text-left pull-left w-120">任务状态：</label>
+                                            <div class="col pull-left">
+                                                <input value="${message.getStatus()}" type="text" class="form-control w-300 input-sm" name="status" id="status" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="sendedStatus" class="control-label text-left pull-left w-120">已执行状态：</label>
+                                            <div class="col pull-left">
+                                                <input value="${message.getSendedStatus()}" type="text" class="form-control w-300 input-sm" name="sendedStatus" id="sendedStatus" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="unSendStatus" class="control-label text-left pull-left w-120">未执行状态：</label>
+                                            <div class="col pull-left">
+                                                <input value="${message.getUnSendStatus()}" type="text" class="form-control w-300 input-sm" name="unSendStatus" id="unSendStatus" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="sendFailStatus" class="control-label text-left pull-left w-120">发送失败状态：</label>
+                                            <div class="col pull-left">
+                                                <input value="${message.getSendFailStatus()}" type="text" class="form-control w-300 input-sm" name="sendFailStatus" id="sendFailStatus" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="serialNumber" class="control-label text-left pull-left w-120">发送流水号：</label>
+                                            <div class="col pull-left">
+                                                <input value="${message.getSerialNumber()}" type="text" class="form-control w-300 input-sm" name="serialNumber" id="serialNumber" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="taskId" class=" control-label text-left  pull-left w-120">发送任务编号：</label>
+                                            <div class="col pull-left">
+                                                <input value="${message.getTaskId()}" type="text" class="form-control w-300 input-sm" name="taskId" id="taskId" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="textTemplateId" class="control-label text-left pull-left w-120">短信模板：</label>
+                                            <div class="col pull-left">
+                                                <input value="${message.getTextTemplateId()}" type="text" class="form-control w-300 input-sm" name="textTemplateId" id="textTemplateId" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="mediaId" class="control-label text-left pull-left w-120">e信素材Id：</label>
+                                            <div class="col pull-left">
+                                                <input value="${message.getMediaId()}" type="text" class="form-control w-300 input-sm" name="mediaId" id="mediaId" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="mediaUrl" class=" control-label text-left  pull-left w-120">e信素材Url：</label>
+                                            <div class="col pull-left">
+                                                <input value="${message.getMediaUrl()}" type="text" class="form-control w-300 input-sm" name="mediaUrl" id="mediaUrl" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <label for="replyContent" class=" control-label text-left  pull-left w-120">e信上行回复：</label>
+                                            <div class="col pull-left">
+                                                <input value="${message.getReplyContent()}" type="text" class="form-control w-300 input-sm" name="replyContent" id="replyContent" placeholder="">
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <#list dynaList as item>
+                                    	<li>
+	                                        <div class="form-group" >
+	                                            <label for="telp" class="control-label text-left pull-left w-120">占位符：</label>
+	                                            <div class="col required pull-left">
+	                                                <input value="${item.skey}" type="text" class="form-control w-100 input-sm" name="strKey" placeholder="">
+	                                            </div>
+	                                            <div class="col required pull-left">
+	                                                <input value="${item.svalue}" type="text" class="form-control w-100 input-sm" name="strValue" placeholder="">
+	                                            </div>
+	                                        </div>
+                                    	</li>
+                                    </#list>
+                                    <input name="dynamicJson" id="dynamicJson" type="hidden" value="${message.getDynamicJson()}"/>
+<!--                                     <li> -->
+<!--                                         <div class="form-group"> -->
+<!--                                             <label for="telp" class="control-label text-left pull-left w-120">失败号码：</label> -->
+<!--                                             <div class="col pull-left"> -->
+<!--                                                 <input type="tel" class="form-control w-300 input-sm" id="telp" placeholder=""> -->
+<!--                                             </div> -->
+<!--                                         </div> -->
+<!--                                     </li> -->
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <div class="text-center p-t-20">
+                                <button onclick="javascript:return columnClick();" type="button" class="btn btn-cons btn-primary m-r-10">保存</button>
+                            </div>
+                        </div>
+                    </div>
+                	</form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-nav">
+        <dl class="about">
+            <!-- <dt>关于我们</dt>
+    <dd>· <a href="http://www.flaginfo.com.cn/list-107-1.html" target="_blank">关于一信通</a></dd>
+    <dd>· <a href="http://www.flaginfo.com.cn/list-112-1.html" target="_blank">方案与服务</a></dd>
+    <dd>· <a href="http://www.flaginfo.com.cn/list-99-1.html" target="_blank">经典案例 </a></dd> -->
+            <dt>关于我们</dt>
+            <dd class="introduce">
+                一信通是致力于企业信息移动化服务、专注于移动互联网提供端到端解决方案的信息服务平台
+            </dd>
+        </dl>
+        <dl class="down pos_rel">
+            <div class="qq">
+                <a href="javascript:openQQWebchat();">
+                    <img border="0" src="http://wpa.qq.com/imgd?IDKEY=6032d238acf264090340e5ce47ad6d53fec05ee6cc805bec&amp;pic=51" alt="点击这里给我发消息" title="点击这里给我发消息"></a>
+            </div>
+            <dt>联系我们</dt>
+            <dd>客户服务（工作日 9:00-19:00）</dd>
+            <dd>企业QQ：4000806909</dd>
+            <dd>电话：400-696-6677</dd>
+            <dd>
+                <!--  <a href="http://www.flaginfo.com.cn/list-109-1.html" target="_blank">更多联系方式</a> -->
+            </dd>
+        </dl>
+        <dl>
+            <dt>商务合作</dt>
+            <dd>商务合作（工作日 9:00-19:00）</dd>
+            <dd>合作咨询当地联通集客经理</dd>
+            <!-- <dd>QQ：422465987</dd> -->
+            <dd>
+                <!--     电话：021-50806677转260 -->
+            </dd>
+            <dd>
+                <!--     邮件: longjiao.hu@flaginfo.com.cn  -->
+                <!-- <a href="#">邮件: longjiao.hu@flaginfo.com.cn</a> -->
+            </dd>
+        </dl>
+        <!-- <dl>
+            <dt>e兆社区</dt>
+            <dd>
+                <span class="dropupmenucom upmenubox popupParentEl">
+           <span class="trigger icontrigger"><img src="http://res.ums86.com/5/0/static/images/weixin_zhixun.png"></span>
+                <div class="menuwrap popupEl" style="display: none;">
+                    <span class="arrow left45"></span>
+                    <div class="menucontent">
+                        <div class="droptext">
+                            <img src="http://res.ums86.com/5/0/static/images/weixin2_zhixun.png">
+                        </div>
+                    </div>
+                </div>
+                </span>
+            </dd>
+            <dd>沪ICP备10032707号</dd>
+        </dl> -->
+    </div>
+    <!--vendor js -->
+    <script src="${dynamicDomain}/static/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <script src="${dynamicDomain}/static/js/bootstrap.js" type="text/javascript"></script>
+    <script src="${dynamicDomain}/static/js/ep6.js"></script>
+    
+<script>
+function columnClick() {
+	if ($("#smsSendTable").val() == "") {
+		alert("信息发送表名不能为空");
+		return false;
+	}
+	if ($("#messageContent").val() == "") {
+		alert("短信内容不能为空");
+		return false;
+	}
+	if ($("#sendToMobile").val() == "") {
+		alert("要发送的号码不能为空");
+		return false;
+	}
+	if ($("#id").val() == "") {
+		alert("唯一键值不能为空");
+		return false;
+	}
+	if ($("#planTime").val() == "") {
+		alert("定时发送时间不能为空");
+		return false;
+	}
+	if ($("#sendType").val() == "") {
+		alert("发送类型不能为空");
+		return false;
+	}
+	if ($("#sendSmsType").val() == "") {
+		alert("短信发送类型不能为空");
+		return false;
+	}
+	if ($("#sendEmsType").val() == "") {
+		alert("e信发送类型不能为空");
+		return false;
+	}
+	if ($("#createTime").val() == "") {
+		alert("发送任务创建时间不能为空");
+		return false;
+	}
+	if ($("#status").val() == "") {
+		alert("任务状态不能为空");
+		return false;
+	}
+	if ($("#sendedStatus").val() == "") {
+		alert("已执行状态不能为空");
+		return false;
+	}
+	if ($("#unSendStatus").val() == "") {
+		alert("未执行状态不能为空");
+		return false;
+	}
+	if ($("#sendFailStatus").val() == "") {
+		alert("发送失败状态不能为空");
+		return false;
+	}
+	if ($("#serialNumber").val() == "") {
+		alert("发送流水号不能为空");
+		return false;
+	}
+	if ($("#taskId").val() == "") {
+		alert("发送任务编号不能为空");
+		return false;
+	}
+	if ($("#textTemplateId").val() == "") {
+		alert("短信模板不能为空");
+		return false;
+	}
+	if ($("#mediaId").val() == "") {
+		alert("e信素材Id不能为空");
+		return false;
+	}
+	if ($("#mediaUrl").val() == "") {
+		alert("e信素材Url不能为空");
+		return false;
+	}
+	
+	var strkey = $("input[name='strKey']"); 
+	var strvalue = $("input[name='strValue']"); 
+	var legth = strkey.length;
+	var lgdth = strvalue.length;
+	
+	if((legth > 0) && (lgdth > 0)){
+		var resultStr = "[";	
+		for(var i=0;i<legth;i++){
+			var skobj = strkey.get(i).value;
+			var svobj = strvalue.get(i).value;
+			if(skobj != "" && svobj != ""){
+				if (i == 0) {
+					resultStr += "{skey:" + skobj + ",svalue:" + svobj + "}";
+				} else {
+					resultStr += ",{skey:" + skobj + ",svalue:" + svobj + "}";
+				}
+			}
+		}
+		resultStr += "]";
+		$("#dynamicJson").val(resultStr);
+	}
+	
+	$("#columnForm").submit();
+}
+</script>
+
+</body>
+
+</html>
