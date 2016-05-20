@@ -19,6 +19,7 @@ public class ConnectionUtils {
             conn = conns.get();
             if (conn == null) {
                 conn = DBUtils.getConnection();
+                conns.set(conn);
             }
         } catch (Exception e) {
             throw new RuntimeException("从数据源获取链接失败");
